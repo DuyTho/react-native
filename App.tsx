@@ -1,18 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const [infor, setInfor] = useState({
+    name: 'Duy Tho',
+    age: 20,
+    adress: 'HCM'
+  });
+  const [count, setCount] = useState<number>(0)
+
+
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 40, fontWeight: 'bold' }}>
+        Hello React Native
+      </Text>
+      <Text>My name is {infor.name}</Text>
+      <Text>I'm {infor.age}</Text>
+      <Text>I live in {infor.adress}</Text>
+      <Text>Press until the number {count}</Text>
       <View>
-        <Text style={styles.header}>DuyTho</Text>
-        <Text style={styles.dad}>
-          I'm starting to learn React Native.
-          <Text style={styles.child}> I will conquer it!</Text>
-        </Text>
+        <Button
+          color={"blue"}
+          title='increase'
+          onPress={() => setCount(count + 1)} />
       </View>
-      <Text style={styles.hello1}>HELOOOOOOOOOOOO!</Text>
-      <Text>Hello World Duy Tho</Text>
     </View >
   );
 }
@@ -24,25 +37,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  hello1: {
-    color: 'red',
-    fontWeight: 'bold',
-    padding: 10,
-    fontSize: 20
-  },
-  header: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: 'green'
-  },
-  dad: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: 'yellow'
-  },
-  child: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: 'blue'
-  }
+
 });
