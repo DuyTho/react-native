@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [students, setStudents] = useState([
@@ -21,7 +21,21 @@ export default function App() {
       <Text style={{ fontSize: 40, fontWeight: 'bold' }}>
         Hello React Native
       </Text>
-      <ScrollView>
+      <FlatList
+        data={students}
+        keyExtractor={item => item.id + ""}
+        renderItem={({ item }) => {
+          return (
+            <View style={{
+              padding: 20,
+              backgroundColor: 'pink',
+              marginBottom: 30
+            }}>
+              <Text>{item.name}</Text>
+            </View>
+          )
+        }} />
+      {/*<ScrollView>
         {students.map(item => {
           return (
             <View key={item.id}
@@ -35,7 +49,7 @@ export default function App() {
             </View>
           )
         })}
-      </ScrollView>
+      </ScrollView>*/}
     </View >
     // ScrollView giúp cho người dùng có thể cuộn chuột và xem xét hết được
   );
